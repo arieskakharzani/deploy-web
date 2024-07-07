@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   {{template "general/header"}}
+
+   <style>
+    #user-element {
+      display: none;
+    }
+   </style>
+</head>
+<body>
+  <div class="min-h-full">
+    <nav>
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 border-b-2 border-indigo-600">
+        <div class="flex h-16 items-center justify-between">
+          <div class="flex items-center">
+            <div class="flex-shrink-0">
+              <img class="h-8 w-8" src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600" alt="Your Company">
+            </div>
+            <div class="hidden md:block">
+              <div class="ml-10 flex items-baseline space-x-4">
+                <a href="/client/dashboard" class=" hover:bg-indigo-600 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Dashboard</a>
+                <a href="/client/task" class=" hover:bg-indigo-600 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Task</a>
+                <a href="/client/category" class="bg-indigo-600 text-white rounded-md px-3 py-2 text-sm font-medium" aria-current="page">Category</a>
+              </div>
+            </div>
+          </div>
+          <div class="hidden md:block">
+            <div class="ml-4 flex items-center md:ml-6">
+              <button type="button" class="rounded-full hover:bg-indigo-600 p-1 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-white">
+                <span class="sr-only">View notifications</span>
+                <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M14.857 17.082a23.848 23.848 0 005.454-1.31A8.967 8.967 0 0118 9.75v-.7V9A6 6 0 006 9v.75a8.967 8.967 0 01-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 01-5.714 0m5.714 0a3 3 0 11-5.714 0" />
+                </svg>
+              </button>
+  
+              <!-- Profile dropdown -->
+              <div class="relative ml-3">
+                <div>
+                  <button type="button" class="flex max-w-xs items-center rounded-full bg-indigo-600 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-indigo-600" id="user-menu-button" aria-expanded="false" aria-haspopup="true">
+                    <span class="sr-only">Open user menu</span>
+                    <img class="h-8 w-8 rounded-full" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="">
+                  </button>
+                </div>
+                <div id="user-element" class="absolute right-0 z-10 mt-4 w-48 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1">
+                  <a href="#" class="rounded-md hover:bg-indigo-600 hover:text-white block px-4 py-2 text-sm" role="menuitem" tabindex="-1" id="user-menu-item-0">Your Profile</a>
+                  <a href="#" class="rounded-md hover:bg-indigo-600 hover:text-white block px-4 py-2 text-sm" role="menuitem" tabindex="-1" id="user-menu-item-1">Settings</a>
+                  <a href="/client/logout" class="rounded-md hover:bg-indigo-600 hover:text-white block px-4 py-2 text-sm" role="menuitem" tabindex="-1" id="user-menu-item-2">Sign out</a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="-mr-2 flex md:hidden">
+            <!-- Mobile menu button -->
+            <button id="trayclose" type="button" class="text-indigo-600 border border-indigo-600 hover:border-0 inline-flex items-center justify-center rounded-md p-2 hover:bg-indigo-600 hover:text-white" aria-controls="mobile-menu" aria-expanded="false">
+              <span class="sr-only">Open main menu</span>
+              <!-- Menu open: "hidden", Menu closed: "block" -->
+              <svg class="block h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+              </svg>
+              <!-- Menu open: "block", Menu closed: "hidden" -->
+              <svg class="hidden h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+  
+      <!-- Mobile menu, show/hide based on menu state. -->
+      <div class="md:hidden hidden" id="nav-menu">
+        <div class="space-y-1 px-2 pb-3 pt-2 sm:px-3">
+          <a href="/client/dashboard" class="hover:bg-indigo-600 hover:text-white block rounded-md px-3 py-2 text-base font-medium">Dashboard</a>
+          <a href="/client/task" class=" hover:bg-indigo-600 hover:text-white block rounded-md px-3 py-2 text-base font-medium">Task</a>
+          <a href="/client/category" class="bg-indigo-600 text-white block rounded-md px-3 py-2 text-base font-medium" aria-current="page">Category</a>
+        </div>
+        <div class="border-b border-indigo-600 pb-3 pt-4">
+          <div class="flex items-center px-5">
+            <div class="flex-shrink-0">
+              <button type="button" class="flex max-w-xs items-center rounded-full bg-indigo-600 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-indigo-600" id="user-menu-button1" aria-expanded="false" aria-haspopup="true">
+                <span class="sr-only">Open user menu</span>
+                <img class="h-8 w-8 rounded-full" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="">
+              </button>
+            </div>
+            <div id="user-element1" class="hidden absolute left-4 z-10 mt-[175px] w-48 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1">
+              <a href="#" class="rounded-md hover:bg-indigo-600 hover:text-white block px-4 py-2 text-sm" role="menuitem" tabindex="-1" id="user-menu-item-0">Your Profile</a>
+                  <a href="#" class="rounded-md hover:bg-indigo-600 hover:text-white block px-4 py-2 text-sm" role="menuitem" tabindex="-1" id="user-menu-item-1">Settings</a>
+                  <a href="/client/logout" class="rounded-md hover:bg-indigo-600 hover:text-white block px-4 py-2 text-sm" role="menuitem" tabindex="-1" id="user-menu-item-2">Sign out</a>
+            </div>
+            <div class="ml-3">
+              <div class="text-sm font-medium leading-none">{{.email}}</div>
+            </div>
+            <button type="button" class="ml-auto flex-shrink-0 rounded-full hover:bg-indigo-600 p-1 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
+              <span class="sr-only">View notifications</span>
+              <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M14.857 17.082a23.848 23.848 0 005.454-1.31A8.967 8.967 0 0118 9.75v-.7V9A6 6 0 006 9v.75a8.967 8.967 0 01-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 01-5.714 0m5.714 0a3 3 0 11-5.714 0" />
+              </svg>
+            </button>
+          </div>
+          <div id="user-element" class="mt-3 space-y-1 px-2">
+            <a href="#" class="block rounded-md px-3 py-2 text-base font-medium text-gray-400 hover:bg-indigo-600 hover:text-white">Your Profile</a>
+            <a href="#" class="block rounded-md px-3 py-2 text-base font-medium text-gray-400 hover:bg-indigo-600 hover:text-white">Settings</a>
+            <a href="/client/logout" class="block rounded-md px-3 py-2 text-base font-medium text-gray-400 hover:bg-indigo-600 hover:text-white">Sign out</a>
+          </div>
+        </div>
+      </div>
+    </nav>
+    <main>
+      <div class="mx-auto max-w-3xl py-6 px-6 lg:px-8">
+        <!-- Background --> 
+        <div class="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80" aria-hidden="true">
+          <div class="relative left-[calc(50%-11rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 rotate-[30deg] bg-gradient-to-tr from-[#ff80b5] to-[#9089fc] opacity-30 sm:left-[calc(50%-30rem)] sm:w-[72.1875rem]" style="clip-path: polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)"></div>
+        </div>
+        <!-- Your content -->
+          <div class="mt-10 p-6 bg-white shadow-lg rounded-lg">
+            <div class="sm:mx-auto sm:w-full max-w-xl">
+              <img class="mx-auto h-10 w-auto" src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600" alt="Your Company">
+              <h2 class="mt-6 mb-5 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">Add New Category</h2>
+  
+              <form class="space-y-3 mb-5" action="/client/category/add/process" method="POST">
+                <div>
+                  <label for="category_name" class="block text-sm font-medium leading-6 text-gray-900">Category Name</label>
+                  <div class="mt-1">
+                    <input id="category_name" name="category_name" type="text" placeholder="Category Name" autocomplete="category_name" required class="px-3 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                  </div>
+                </div>
+                <div>
+                  <button type="submit" class="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Add Category</button>
+                </div>
+              </form>
+  
+              <ul role="list" class="divide-y divide-gray-100">
+                  {{range $key, $val := .categories}}
+                  <li class="flex justify-between gap-x-6 py-5">
+                    <div class="flex gap-x-4">
+                      <div class="h-12 w-12 flex-none rounded-full bg-indigo-600 pt-1.5 pb-2 pl-2 pr-2 " >
+                        <img src="https://raw.githubusercontent.com/iqbalwaldan/upload/master/boxes.png" alt="">
+                      </div>
+                      <div class="min-w-0 flex-auto">
+                        <p class="text-sm font-semibold leading-6 text-gray-900">{{$val.Name}}</p>
+                        <p class="mt-1 truncate text-xs leading-5 text-gray-500">CategoryID: {{$val.ID}}</p>
+                      </div>
+                    </div>
+                  </li>
+                  {{end}}
+              </ul>
+          </div>
+        <!-- Background -->
+        <div class="absolute inset-x-0 top-[calc(100%-13rem)] -z-10 transform-gpu overflow-hidden blur-3xl sm:top-[calc(100%-30rem)]" aria-hidden="true">
+          <div class="relative left-[calc(50%+3rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 bg-gradient-to-tr from-[#ff80b5] to-[#9089fc] opacity-30 sm:left-[calc(50%+36rem)] sm:w-[72.1875rem]" style="clip-path: polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)"></div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script>
+    const toggleButton = document.getElementById("user-menu-button");
+    const toggleButton1 = document.getElementById("user-menu-button1");
+    const userElement = document.getElementById("user-element");
+    const userElement1 = document.getElementById("user-element1");
+   
+    toggleButton.addEventListener("click", function() {
+      const isVisible = userElement.style.display === "block";
+        if (isVisible) {
+          userElement.style.display = "none";
+        } else {
+          userElement.style.display = "block";
+        }
+    });
+    toggleButton1.addEventListener("click", function() {
+      const isVisible = userElement1.style.display === "block";
+        if (isVisible) {
+          userElement1.style.display = "none";
+        } else {
+          userElement1.style.display = "block";
+        }
+    });
+
+    // Tray
+    const trayclose = document.querySelector('#trayclose');
+    const trayopen = document.querySelector('#trayopen');
+    const navmenu = document.querySelector('#nav-menu');
+
+    trayclose.addEventListener('click', function () {
+        navmenu.classList.toggle('hidden');
+    });
+    trayopen.addEventListener('click', function () {
+        navmenu.classList.toggle('hidden');
+    });
+  </script>
+</body>
+</html>
